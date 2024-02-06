@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to UEFA Champions League</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://i.pinimg.com/originals/0b/38/81/0b38815c5872fa68c9c0852dbbdced8b.jpg') center/cover;
+            color: #000;
+            text-align: center;
+            position: relative;
+        }
+
+        header {
+            padding: 20px;
+            background-color: rgba(0, 64, 128, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #fff;
+        }
+
+        .auth-section {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #00;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .auth-buttons a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #000;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 20px;
+            margin-top: 80px;
+        }
+
+        .welcome-message {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #fff;  /* Set the text color to white */
+        }
+
+        .featured-section {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+      		color:#fff
+        }
+
+        .featured-card {
+            width: 300px;
+            padding: 20px;
+
+            border-radius: 8px;
+
+            margin: 10px;
+        }
+
+        .cta-button {
+            background-color: #FFD700;
+            color: #000;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #00;
+            color: #FFD700;
+        }
+
+        footer {
+            padding: 20px;
+            background-color: rgba(header {
+            padding: 20px;
+            background-color: rgba(0, 64, 128, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #fff;
+        });
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div>
+        <h1>UEFA Champions League</h1>
+    </div>
+</header>
+
+<div class="auth-section">
+    <div class="auth-buttons">
+        <a href="{% url 'registration' %}">Sign Up</a>
+        <a href="{% url 'login' %}">Login</a>
+    </div>
+</div>
+
+<section>
+    <div class="welcome-message">
+        Welcome to the UEFA Champions League!
+    </div>
+
+    <div class="featured-section">
+        <!-- Featured Cards -->
+        <div class="featured-card">
+            <h3>Exciting Matches</h3>
+            <p>Discover the most thrilling matches in the Champions League.</p>
+        </div>
+
+        <div class="featured-card">
+            <h3>Top Teams</h3>
+            <p>Explore profiles of the top teams competing for glory.</p>
+        </div>
+
+        <div class="featured-card">
+            <h3>Latest News</h3>
+            <p>Stay updated with the latest news and updates from the Champions League.</p>
+        </div>
+    </div>
+
+
+
+
+</section>
+
+<footer>
+    <p>&copy; 2024 UEFA Champions League</p>
+</footer>
+
+</body>
+</html>

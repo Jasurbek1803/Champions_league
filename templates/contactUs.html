@@ -1,0 +1,177 @@
+<!-- contactUs.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - UEFA Champions League</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://i.pinimg.com/originals/0b/38/81/0b38815c5872fa68c9c0852dbbdced8b.jpg') center/cover;
+            color: #fff;
+            text-align: center;
+        }
+
+        header {
+            padding: 20px;
+            background-color: rgba(0, 64, 128, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #fff;
+        }
+
+        nav {
+            background-color: rgba(0, 64, 128, 0.8);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #FFD700;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        .content {
+            margin: 20px;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .content h3 {
+            color: #fff;
+        }
+
+        .content p {
+            color: #fff;
+        }
+
+        .social-link {
+            margin-top: 20px;
+        }
+
+        .social-link a {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .social-link img {
+            width: 30px; /* Set the desired width for the Instagram logo */
+            height: 30px; /* Set the desired height for the Instagram logo */
+        }
+
+        footer {
+            padding: 20px;
+            background-color: rgba(0, 64, 128, 0.8);
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            color: #fff;
+        }
+
+        .insta {
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+            border-radius: 8px;
+            display: grid;
+            place-items: center;
+        }
+
+        .innerbox {
+            width: 20px;
+            height: 20px;
+            border: 5px solid #fff;
+            border-radius: 6px;
+            display: grid;
+            place-items: center;
+            position: relative;
+        }
+
+        .innerbox::before {
+            content: '';
+            width: 9px;
+            height: 9px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            background: transparent;
+            position: absolute;
+        }
+
+        .innerbox::after {
+            content: '';
+            width: 2px;
+            height: 2px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            background: #fff;
+            position: absolute;
+            top: 2px;
+            right: 3px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <h1>UEFA Champions League</h1>
+        </div>
+    </header>
+
+    <nav>
+        <a href="{% url 'news' %}">News</a>
+        <a href="{% url 'games' %}">Games</a>
+        <a href="{% url 'teams' %}">Teams</a>
+        <a href="{% url 'dream_team' %}">Dream Team</a>
+        <a href="{% url 'aboutUs' %}">About Us</a>
+        <a href="{% url 'contactUs' %}">Contact Us</a>
+        <a href="{% url 'index' %}">Logout</a>
+    </nav>
+
+    <section id="contacts">
+        <div class="content">
+            <h3>Remember that</h3>
+            <p>This site was made for my first project. So, I apologize for mistakes and faults. In my opinion, You are already gotten amazing impressions,news and  joys. Thanks to all.</p>
+            <h3>General Inquiries</h3>
+            <p>The site was created by Jasurbek Shodmonov</p>
+            <p>Email: info@uefachampionsleague.com</p>
+            <div class="social-link">
+               <p>Social media:</p>
+                <a href="https://www.instagram.com/believerr__me/?next=%2F" target="_blank" class="insta">
+                    <div class="innerbox"></div>
+                </a>
+            </div>
+        </div>
+        <!-- Add more contact information as needed -->
+    </section>
+
+    <footer>
+        <p>&copy; 2024 UEFA Champions League</p>
+    </footer>
+
+</body>
+
+</html>

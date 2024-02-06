@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UEFA Champions League - View Comments</title>
+    <style>
+       body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://i.pinimg.com/originals/0b/38/81/0b38815c5872fa68c9c0852dbbdced8b.jpg') center/cover;
+            color: #fff;
+            text-align: center;
+        }
+
+        header {
+            padding: 20px;
+            background-color: rgba(0, 64, 128, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #fff;
+        }
+
+        nav {
+            background-color: rgba(0, 64, 128, 0.8);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #FFD700;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        section h2 {
+            color: #fff;
+        }
+
+        .comments-container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            color: black;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        .comment {
+            margin-bottom: 10px;
+        }
+
+      	.comments-container button {
+            background-color: #004080;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+}
+      	.comments-container button a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+
+        .comments-container button:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        footer {
+            padding: 20px;
+            background-color: rgba(0, 64, 128, 0.8);
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>UEFA Champions League</h1>
+    <!-- Add any other header content you may need -->
+</header>
+
+<nav>
+    <!-- Add your navigation content here -->
+</nav>
+
+<section id="comments">
+    <h2>{{ news_item.title }} - Comments</h2>
+
+    <!-- Display existing comments -->
+    <div class="comments-container">
+        {% for comment in comments %}
+            <div class="comment">
+                <p>{{ comment.text }}-------{{ comment.user.username }}-----{{comment.created_at}}</p>
+                {% if comment.user == user %}
+            <form method="post" action="{% url 'view_comments' news_id=news_item.id %}">
+            {% csrf_token %}
+            <input type="hidden" name="comment_id" value="{{ comment.id }}">
+            <input type="hidden" name="action" value="edit">
+            <label for="edit_comment_text">Edit your comment:</label>
+            <input type="text" id="edit_comment_text" name="text" value="{{ comment.text }}">
+            <button type="submit">Edit</button>
+             </form>
+        <form method="post" action="{% url 'view_comments' news_id=news_item.id %}">
+            {% csrf_token %}
+            <input type="hidden" name="comment_id" value="{{ comment.id }}">
+            <input type="hidden" name="action" value="delete">
+            <button type="submit">Delete</button>
+        </form>
+
+
+    {% endif %}
+            </div>
+        {% endfor %}
+
+        <button><a href="{% url 'news' %}">Home</a></button>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 UEFA Champions League</p>
+    <!-- Add any other footer content you may need -->
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UEFA Champions League</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://i.pinimg.com/originals/0b/38/81/0b38815c5872fa68c9c0852dbbdced8b.jpg') center/cover;
+            color: #fff;
+            text-align: center;
+        }
+
+        header {
+            padding: 20px;
+            background-color: rgba(0, 64, 128, 0.8); /* UEFA Champions League Blue */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #fff; /* White */
+        }
+
+        nav {
+            background-color: rgba(0, 64, 128, 0.8); /* UEFA Champions League Blue */
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff; /* White */
+            text-decoration: none;
+            margin: 0 20px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #FFD700; /* UEFA Champions League Gold */
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        section h2 {
+            color: #fff; /* White */
+        }
+
+        .news-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: stretch;
+        }
+
+        .news-item {
+            width: 1000px;
+            margin: 10px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            color: #000;
+        }
+
+        .news-item:hover {
+            transform: scale(1.05);
+        }
+
+        .news-item h3 {
+            color: #000; /* Black */
+            margin-bottom: 10px;
+
+
+        }
+
+        .add-news-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: white; /* UEFA Champions League Gold */
+            color: black; /* White */
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-news-button:hover {
+            background-color: #004080;
+      		color: #fff;/* Darker gold on hover */
+        }
+
+        footer {
+            padding: 20px;
+            background-color: rgba(0, 64, 128, 0.8); /* UEFA Champions League Blue */
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            color: #fff; /* White */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div>
+        <h1>UEFA Champions League</h1>
+    </div>
+</header>
+
+<nav>
+    <a href="{% url 'news' %}">News</a>
+    <a href="{% url 'games' %}">Games</a>
+    <a href="{% url 'teams' %}">Teams</a>
+    <a href="{% url 'dream_team' %}">Dream Team</a>
+    <a href="{% url 'aboutUs' %}">About Us</a>
+    <a href="{% url 'contactUs' %}">Contact Us</a>
+    <a href="{% url 'index' %}">Logout</a>
+</nav>
+
+<section id="news">
+    <h2>News</h2>
+
+    {% if user.is_authenticated and user.is_staff %}
+        <a href="{% url 'add_news' %}" class="add-news-button">Add News</a>
+    {% endif %}
+    <!-- Update the section inside the for loop for news items -->
+<div class="news-container">
+    {% for news_item in news_list %}
+        <div class="news-item">
+            <h3>{{ news_item.title }}</h3>
+            <p>{{ news_item.content }}</p>
+
+
+
+            <h3> <a href="{% url 'view_comments' news_id=news_item.id %}">See all comments:</a></h3>
+
+
+
+            {% if user.is_authenticated %}
+                <form method="post" action="{% url 'add_comment' news_id=news_item.id %}">
+                {% csrf_token %}
+                <label for="comment_text">Add a comment:</label>
+                <textarea id="comment_text" name="comment_text" rows="2" cols="40"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+            {% else %}
+                <p>Login to leave a comment</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+
+
+
+
+
+</section>
+
+<footer>
+    <p>&copy; 2024 UEFA Champions League</p>
+</footer>
+
+</body>
+</html>

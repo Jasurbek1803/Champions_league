@@ -1,0 +1,168 @@
+<!-- dream_teams.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Dream Teams - UEFA Champions League</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://i.pinimg.com/originals/0b/38/81/0b38815c5872fa68c9c0852dbbdced8b.jpg') center/cover;
+            color: #fff;
+            text-align: center;
+        }
+
+        header {
+            padding: 20px;
+            background-color: rgba(0, 64, 128, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #fff;
+        }
+
+        nav {
+            background-color: rgba(0, 64, 128, 0.8);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #FFD700;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        .dream-teams {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .dream-teams h2 {
+            color: #004080;
+        }
+
+        .dream-teams h3 {
+            color: #004080;
+        }
+
+        .dream-teams ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .dream-teams li {
+            color: #333;
+        }
+
+        .create-team {
+
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .create-team h2 {
+            color: #004080;
+        }
+
+        .create-team label {
+            color: white;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .create-team input[type="text"] {
+            width: 20%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        .create-team label,
+        .create-team input[type="checkbox"] {
+            display: inline-block;
+            vertical-align: center;
+        }
+
+        .create-team button {
+            background-color: ;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .create-team button:hover {
+            background-color: #004080;
+            color:white
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <h1>UEFA Champions League</h1>
+        </div>
+    </header>
+
+    <nav>
+        <a href="{% url 'news' %}">News</a>
+        <a href="{% url 'games' %}">Games</a>
+        <a href="{% url 'teams' %}">Teams</a>
+        <a href="{% url 'dream_team' %}">Dream Team</a>
+        <a href="{% url 'aboutUs' %}">About Us</a>
+        <a href="{% url 'contactUs' %}">Contact Us</a>
+        <a href="{% url 'index' %}">Logout</a>
+
+    </nav>
+
+    <section id="dreamTeams">
+
+
+        <div class="create-team">
+
+        <h2>Team: {{ team.name }}</h2>
+
+          <p>Player Count: {{ player_count }}</p>
+
+          <form method="post" action="{% url 'add_players' team.id %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Add Player</button>
+          </form>
+
+
+
+        </div>
+    </section>
+
+</body>
+
+</html>
